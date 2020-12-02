@@ -1,4 +1,4 @@
-name: lab
+name: gitbook
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
     - cron: '0 16 */1 * *'
 
 jobs:
-  hub:
+  gitbook:
     runs-on: ubuntu-20.04
     steps:
     - name: Checkout code
@@ -14,10 +14,13 @@ jobs:
 
     - name: preprocessing
       run: |
+          set -ex
           sudo apt-get install -y dos2unix
           find -type f -name *.sh| xargs dos2unix
           find -type f -name *.sh| xargs chmod +x
 
     - name: build
-      run: |
-          sudo ./build.sh
+      uses: ZanderZhao/gitbook-action@v1.2.4
+      with:
+        token: ${{ secrets.PERSONAL_TOKEN }}
+        source_dir: gitbook
