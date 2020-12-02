@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  ssh:
+    image: registry.cn-hangzhou.aliyuncs.com/sqjian/venv:ubuntu20_04
+    command: ./expect.ssh.sh
+    working_dir: /lab
+    network_mode: host
+    restart: "always"
+    volumes:
+      - ${PWD}:/lab:ro
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"

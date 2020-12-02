@@ -1,0 +1,17 @@
+http:
+  routers:
+    traefik:
+      entryPoints:
+        - traefik
+      rule: PathPrefix(`/api`) || PathPrefix(`/dashboard`)
+      service: api@internal
+      middlewares:
+        - auth
+  middlewares:
+    auth:
+      basicAuth:
+        users:
+          - "sqjian:$apr1$FoC55b4H$X.4Vz2zUoy9sdpdJNTsc80"
+
+# apt-get install -y apache2-utils
+# htpasswd -nb sqjian 12345678

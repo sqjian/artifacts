@@ -1,0 +1,21 @@
+version: "3"
+services:
+  prometheus:
+    image: prom/prometheus
+    restart: "no"
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 65535
+        hard: 65535
+    ports:
+     - 9090:9090
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${PWD}/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ${PWD}/targets.json:/etc/prometheus/targets.json
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.listen-address=:9090'
+      - '--web.enable-lifecycle'

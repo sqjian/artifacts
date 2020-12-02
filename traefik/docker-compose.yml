@@ -1,0 +1,39 @@
+version: "3"
+
+services:
+  traefik:
+    image: traefik:2.4
+    container_name: traefik
+    command: --configFile=/etc/traefik/traefik.yml
+    ports:
+      - 1995:1995
+      - 1996:1996
+      - 1997:1997
+    volumes:
+      - ${PWD}/traefik.yml:/etc/traefik/traefik.yml:ro
+      - ${PWD}/rules:/etc/traefik/rules:ro
+      - ${PWD}/log:/var/log/traefik
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+
+  prometheus:
+    image: prom/prometheus:v2.23.0
+    container_name: prometheus
+    networks:
+      - "default"
+    ports:
+      - 9090:9090
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+    volumes:
+      - ${PWD}/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+
+networks:
+  default:
+    driver: bridge

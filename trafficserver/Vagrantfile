@@ -1,0 +1,36 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure('2') do |config|
+  config.vm.box = "ubuntu/focal"
+  config.vm.box_check_update = false
+
+  config.vm.provision "shell", name: "docker", path: "provision/docker.sh"
+  config.vm.provision "shell", name: "bashrc", path: "provision/bashrc.sh"
+
+  config.vm.synced_folder ".", "/vagrant", disabled: false
+
+  config.ssh.username = "root"
+  config.ssh.password = "9527"
+
+  config.vm.define "dev" do |dev|
+    dev.vm.hostname = "dev"
+    dev.vm.network :private_network,ip:"192.168.60.31"
+
+    $hosts = "
+        set -eux
+        sed -i '/dev/d' /etc/hosts
+        echo '192.168.60.31 dev' >> /etc/hosts
+        "
+    dev.vm.provision "shell", inline: $hosts
+
+    dev.vm.provider :virtualbox do |vb, override|
+        vb.name = "dev"
+
+        vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+        vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
+        vb.customize ["modifyvm", :id, "--memory", "16384"]
+        vb.customize ["modifyvm", :id, "--cpus", 8]
+    end
+  end
+end

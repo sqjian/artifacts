@@ -1,0 +1,14 @@
+tcp:
+  routers:
+    demo:
+      entryPoints:
+        - demo
+      rule: "HostSNI(`*`)"
+      service: demo
+
+  services:
+    demo:
+      loadBalancer:
+        servers:
+          - address: "127.0.0.1:8080"
+          - address: "127.0.0.1:8081"

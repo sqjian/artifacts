@@ -1,0 +1,18 @@
+[
+  {
+    "labels": {
+      "job": "target_group_1"
+    },
+    "targets": [
+      "172.31.243.215:8181"
+    ]
+  },
+  {
+    "labels": {
+      "job": "target_group_2"
+    },
+    "targets": [
+      "172.31.243.215:8181"
+    ]
+  }
+]

@@ -1,0 +1,32 @@
+entryPoints:
+  traefik:
+    address: ":1995/tcp"
+  demo:
+    address: ":1996/tcp"
+  metrics:
+    address: ":1997/tcp"
+
+log:
+  filePath: "/var/log/traefik/traefik.json"
+  format: "json"
+  level: "INFO"
+
+accessLog:
+  filePath: "/var/log/traefik/acceslog.json"
+  format: "json"
+
+providers:
+  file:
+    directory: "/etc/traefik/rules"
+    watch: true
+
+api:
+  insecure: false
+  dashboard: true
+
+metrics:
+  prometheus:
+    addEntryPointsLabels: true
+    addServicesLabels: true
+    entryPoint: metrics
+    manualRouting: true

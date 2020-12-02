@@ -1,0 +1,11 @@
+version: '2.2'
+services:
+  kibana:
+    image: registry.cn-hangzhou.aliyuncs.com/sqjian/artifacts:kibana
+    network_mode: "host"
+    environment:
+      - I18N_LOCALE=zh-CN
+      - SERVER_NAME=kibana
+      - ELASTICSEARCH_HOSTS=http://localhost:9200/
+    ports:
+      - 5601:5601

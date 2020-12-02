@@ -1,0 +1,29 @@
+http:
+  serversTransports:
+    demo-https:
+      insecureSkipVerify: true
+
+  routers:
+    demo-http:
+      entryPoints:
+        - demo
+      rule: PathPrefix(`/http`)
+      service: demo-http
+    demo-https:
+      entryPoints:
+        - demo
+      rule: PathPrefix(`/https`)
+      service: demo-https
+
+  services:
+    demo-http:
+      loadBalancer:
+        servers:
+          - url: http://127.0.0.1:8080
+          - url: http://127.0.0.1:8081
+    demo-https:
+      loadBalancer:
+        serversTransport: "demo-https"
+        servers:
+          - url: https://127.0.0.1:8080
+          - url: https://127.0.0.1:8081
