@@ -1,0 +1,23 @@
+name: lab
+
+on:
+  push:
+  schedule:
+    - cron: '0 16 */1 * *'
+
+jobs:
+  hub:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: preprocessing
+      run: |
+          sudo apt-get install -y dos2unix
+          find -type f -name *.sh| xargs dos2unix
+          find -type f -name *.sh| xargs chmod +x
+
+    - name: build
+      run: |
+          sudo ./build.sh
