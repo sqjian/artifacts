@@ -1,0 +1,7 @@
+http:
+  routers:
+    metrics:
+      entryPoints:
+      - metrics
+      rule: Path(`/metrics`)
+      service: prometheus@internal

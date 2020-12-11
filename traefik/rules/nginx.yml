@@ -1,0 +1,13 @@
+http:
+  routers:
+    nginx:
+      entryPoints:
+      - http
+      rule: Path(`/nginx`)
+      service: nginx
+
+  services:
+    nginx:
+      loadBalancer:
+        servers:
+        - url: http://127.0.0.1:1995/

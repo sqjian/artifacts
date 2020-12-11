@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  reverse-proxy:
+    image: traefik:v2.3
+    command: --configFile=/etc/traefik/traefik.toml
+    network_mode: "host"
+    volumes:
+      - ${PWD}/traefik.toml:/etc/traefik/traefik.toml
+      - ${PWD}/rules:/etc/traefik/rules
+      - ${PWD}/log:/var/log/traefik
