@@ -25,11 +25,3 @@ apt-get install -y \
 	kubelet="${k8s_ver}-00" \
 	kubeadm="${k8s_ver}-00" \
 	kubectl="${k8s_ver}-00"
-
-
-# cni
-# https://raw.githubusercontent.com/coreos/flannel/v0.13.0/Documentation/kube-flannel.yml
-# grep image yaml/kube-flannel.yml |uniq
-aliyuncs_image=registry.cn-hangzhou.aliyuncs.com/google_imags_kubernetes/flannel:v0.13.0
-docker pull ${aliyuncs_image}
-docker tag ${aliyuncs_image} quay.io/coreos/flannel:v0.13.0
