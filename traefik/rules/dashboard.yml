@@ -5,11 +5,4 @@ http:
       - traefik
       rule: PathPrefix(`/api`) || PathPrefix(`/dashboard`)
       middlewares:
-      - auth
       service: api@internal
-
-  middlewares:
-    auth:
-      basicAuth:
-        users:
-        - admin:$apr1$tfG47KbU$0rfjVdm6Lal3VKM8DPKIY.

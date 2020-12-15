@@ -1,0 +1,13 @@
+http:
+  routers:
+    netdata:
+      entryPoints:
+      - netdata
+      rule: Path(`/{any:.*}`)
+      service: netdata
+
+  services:
+    netdata:
+      loadBalancer:
+        servers:
+        - url: http://127.0.0.1:19999
