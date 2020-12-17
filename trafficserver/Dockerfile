@@ -8,6 +8,7 @@ COPY scripts .
 
 RUN set -eux \
         && chmod +x *.sh \
+        && ./dependencies.sh \
         && ./ats8.sh \
         && ./env.sh \
         && ./cleanup.sh \
