@@ -51,4 +51,4 @@ jobs:
           echo -e "update at `date`\n" >>readme.md
           git add -A
           git commit -m "update at `date`"
-          git push
+          git push -f
