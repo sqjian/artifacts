@@ -16,7 +16,7 @@ dpkg-reconfigure locales
 mkdir /tmp/trafficserver
 cd /tmp/trafficserver
 curl -L ${ats} | tar -xj --strip-components 1
-./configure --prefix=/opt/ats --with-user=root
+./configure --prefix=/opt/ats
 make
 make check
 make install
