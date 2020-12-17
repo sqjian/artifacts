@@ -45,7 +45,7 @@ jobs:
           echo "$token_Private_Keys" > ~/.ssh/id_rsa 
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan code.aliyun.com >> ~/.ssh/known_hosts
-          git clone git@code.aliyun.com:sqjian/venv.git
+          git clone git@code.aliyun.com:sqjian/artifact.git
           cd venv
           git log --pretty=format:"%s from Github Actions at `date +"%Y-%m-%d %H:%M:%S"`" --date=short -n 1
           echo -e "update at `date`\n" >>readme.md
