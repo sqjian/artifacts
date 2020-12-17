@@ -31,6 +31,7 @@ apt-get install -y \
             gcc \
             make \
             vim \
+            locales \
             dumb-init
 
 apt-get install -y \
