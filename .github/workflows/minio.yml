@@ -34,3 +34,21 @@ jobs:
         push: true
         tags: |
           sqjian/artifacts:minio
+          
+    - name: trigger_aliyun_ci
+      env:
+        token_Private_Keys: ${{ secrets.ALY_CODE_RSA }}
+      run: |
+          git config --global user.name 'sqjian' 
+          git config --global user.email 'shengqi.jian@qq.com' 
+          mkdir -p ~/.ssh/
+          echo "$token_Private_Keys" > ~/.ssh/id_rsa 
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan code.aliyun.com >> ~/.ssh/known_hosts
+          git clone git@code.aliyun.com:sqjian/venv.git
+          cd venv
+          git log --pretty=format:"%s from Github Actions at `date +"%Y-%m-%d %H:%M:%S"`" --date=short -n 1
+          echo -e "update at `date`\n" >>readme.md
+          git add -A
+          git commit -m "update at `date`"
+          git push
