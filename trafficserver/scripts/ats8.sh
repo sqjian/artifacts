@@ -18,7 +18,6 @@ cd /tmp/trafficserver
 curl -L ${ats} | tar -xj --strip-components 1
 ./configure --prefix=/opt/ats
 make
-make check
 make install
 cd /opt/ats
 bin/traffic_server -R 1
