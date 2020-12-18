@@ -18,4 +18,4 @@ WORKDIR /opt/ats
 
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
-CMD ["start-stop-daemon", "--start --make-pidfile  --pidfile /opt/ats --exec /var/run/trafficserver.pid DAEMON=/opt/ats/bin/traffic_manager"]
+CMD ["start-stop-daemon", "--start", "--make-pidfile", "--pidfile", "/var/run/trafficserver.pid", "--exec", "/opt/ats/bin/traffic_manager"]
