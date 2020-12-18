@@ -1,8 +1,10 @@
-test:
+test: pull
 	docker run \
 		-it \
 		--rm \
 		--net=host \
-		-v ${PWD}:/lab \
-		-w /lab \
-		ubuntu:20.04 bash
+		-v ${PWD}/example:/opt/ats/etc/trafficserver \
+		-w /opt/ats \
+		registry.cn-hangzhou.aliyuncs.com/sqjian/artifacts:trafficserver
+pull:
+	docker pull registry.cn-hangzhou.aliyuncs.com/sqjian/artifacts:trafficserver
