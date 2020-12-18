@@ -16,8 +16,6 @@ RUN set -eux \
         
 WORKDIR /opt/ats
 
-ENV PIDFILE=/var/run/trafficserver.pid DAEMON=/opt/ats/bin/traffic_manager
-
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
-CMD ["start-stop-daemon", "--start --make-pidfile  --pidfile ${PIDFILE} --exec ${DAEMON}"]
+CMD ["start-stop-daemon", "--start --make-pidfile  --pidfile /opt/ats --exec /var/run/trafficserver.pid DAEMON=/opt/ats/bin/traffic_manager"]
