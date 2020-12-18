@@ -21,3 +21,5 @@ make
 make install
 cd /opt/ats
 bin/traffic_server -R 1
+
+chmod 777 -R /opt/ats/var/trafficserver/
