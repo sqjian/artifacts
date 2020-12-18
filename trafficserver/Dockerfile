@@ -13,5 +13,7 @@ RUN set -eux \
         && ./env.sh \
         && ./cleanup.sh \
         && rm -rf *.sh
+        
+WORKDIR /opt/ats
 
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
