@@ -14,9 +14,14 @@ RUN set -eux \
         && ./cleanup.sh \
         && rm -rf *.sh
 
-COPY scripts /lab
+RUN set -eux \
+        && mkdir /etc/redis
 
-WORKDIR /lab
+COPY scripts/init.sh /etc/redis
+COPY scripts/redis.sh /etc/redis
 
+WORKDIR /etc/redis
 
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
+
+CMD ["supervisord"]

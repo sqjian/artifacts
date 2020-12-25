@@ -14,4 +14,6 @@ apt-get install -y \
             dumb-init
 
 apt-get install -y \
-            tcl
+            tcl \
+            psmisc \
+            supervisor
