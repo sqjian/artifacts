@@ -52,3 +52,11 @@ port = 0.0.0.0:8001
 username = admin
 password = 123456
 EOF
+
+tee -a /etc/supervisor/conf.d/redis.conf <<- 'EOF'
+[program:redis]
+command=/usr/local/bin/redis-server
+autostart=true
+autorestart=true
+startsecs=3
+EOF
