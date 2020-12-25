@@ -30,7 +30,7 @@ rm -rf redis_cluster
 
 set -eu
 
-redis_host='172.31.243.215'
+redis_host='0.0.0.0'
 redis_set=''
 
 for redis_port in {6379..6384}

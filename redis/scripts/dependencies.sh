@@ -16,4 +16,6 @@ apt-get install -y \
 apt-get install -y \
             tcl \
             psmisc \
-            supervisor
+            supervisor \
+            expect \
+            tree

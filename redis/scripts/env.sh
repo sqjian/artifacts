@@ -44,3 +44,11 @@ deb-src http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted univers
 deb http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
 deb-src http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
 EOF
+
+tee -a /etc/supervisor/supervisord.conf <<- 'EOF'
+
+[inet_http_server]
+port = 0.0.0.0:8001
+username = admin
+password = 123456
+EOF
