@@ -48,7 +48,7 @@ EOF
 tee -a /etc/supervisor/supervisord.conf <<- 'EOF'
 
 [inet_http_server]
-port = 0.0.0.0:8001
+port = 0.0.0.0:1995
 username = admin
 password = 123456
 EOF
