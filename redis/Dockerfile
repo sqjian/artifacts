@@ -24,4 +24,4 @@ WORKDIR /etc/redis
 
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
-CMD ["supervisord -n"]
+CMD ["supervisord","--nodaemon"]
