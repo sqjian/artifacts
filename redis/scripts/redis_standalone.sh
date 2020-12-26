@@ -29,7 +29,7 @@ set -eu
 
 redis_host='0.0.0.0'
 
-for redis_port in {6379}
+for redis_port in 6379
 do
 	redis_standalone ${redis_host} ${redis_port}
 done
