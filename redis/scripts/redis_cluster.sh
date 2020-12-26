@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-redis_conf()
+redis_cluster()
 {
     redis_host=$1
     redis_port=$2
@@ -19,6 +19,7 @@ redis_conf()
     echo "cluster-config-file ${redis_cluster}" >>${redis_conf}
     echo "cluster-node-timeout 15000" >>${redis_conf}
     echo "appendonly yes" >>${redis_conf}
+    echo "protected-mode no" >>${redis_conf}
 
     cd ${redis_dir}
     redis-server ${redis_conf}
@@ -35,7 +36,7 @@ redis_set=''
 
 for redis_port in {16379..16384}
 do
-	redis_conf ${redis_host} ${redis_port}
+	redis_cluster ${redis_host} ${redis_port}
 	redis_set="${redis_set} ${redis_host}:${redis_port}"
 done
 

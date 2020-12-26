@@ -55,7 +55,7 @@ EOF
 
 tee -a /etc/supervisor/conf.d/redis.conf <<- 'EOF'
 [program:redis]
-command=/usr/local/bin/redis-server
+command=/etc/redis/redis_standalone.sh
 autostart=true
 autorestart=true
 startsecs=3

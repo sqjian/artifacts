@@ -5,13 +5,9 @@ init_redis_cluster()
   ./init_redis_cluster.sh
 }
 
-# if [[ $1 == '-cluster' ]];then
-#         echo 'starting redis cluster...'
-#         init_redis_cluster
-# fi
+init_redis_standalone()
+{
+  ./redis_standalone.sh
+}
 
-echo 'starting redis cluster...'
-init_redis_cluster
-
-echo 'starting redis single...'
 supervisord --nodaemon

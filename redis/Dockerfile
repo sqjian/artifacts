@@ -9,7 +9,7 @@ COPY scripts .
 RUN set -eux \
         && chmod +x *.sh \
         && ./dependencies.sh \
-        && ./install.sh \
+        && ./install_redis.sh \
         && ./env.sh \
         && ./cleanup.sh \
         && rm -rf *.sh
@@ -19,6 +19,7 @@ RUN set -eux \
 
 COPY scripts/init_redis_cluster.sh /etc/redis
 COPY scripts/redis_cluster.sh /etc/redis
+COPY scripts/redis_standalone.sh /etc/redis
 COPY scripts/entrypoint.sh /etc/redis
 
 RUN set -eux \
