@@ -17,11 +17,15 @@ RUN set -eux \
 RUN set -eux \
         && mkdir /etc/redis
 
-COPY scripts/init.sh /etc/redis
-COPY scripts/redis.sh /etc/redis
+COPY scripts/init_redis_cluster.sh /etc/redis
+COPY scripts/redis_cluster.sh /etc/redis
+COPY scripts/entrypoint.sh /etc/redis
+
+RUN set -eux \
+        && chmod +x -R /etc/redis
 
 WORKDIR /etc/redis
 
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
-CMD ["supervisord","--nodaemon"]
+CMD ["bash","-c","./entrypoint.sh"]

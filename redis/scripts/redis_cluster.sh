@@ -33,7 +33,7 @@ set -eu
 redis_host='0.0.0.0'
 redis_set=''
 
-for redis_port in {6379..6384}
+for redis_port in {16379..16384}
 do
 	redis_conf ${redis_host} ${redis_port}
 	redis_set="${redis_set} ${redis_host}:${redis_port}"

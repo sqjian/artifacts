@@ -2,7 +2,7 @@
 
 set timeout -1
 
-spawn ./redis.sh
+spawn ./redis_cluster.sh
 
 expect "*accept*"
 
