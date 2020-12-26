@@ -18,4 +18,5 @@ apt-get install -y \
             psmisc \
             supervisor \
             expect \
-            tree
+            tree \
+            tmux
