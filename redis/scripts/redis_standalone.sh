@@ -22,7 +22,6 @@ redis_standalone()
     cd -
 }
 
-killall -9 redis-server
 rm -rf redis_standalone
 
 set -eu
