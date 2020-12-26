@@ -19,4 +19,5 @@ apt-get install -y \
             supervisor \
             expect \
             tree \
-            tmux
+            tmux \
+            iproute2
