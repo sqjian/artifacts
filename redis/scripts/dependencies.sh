@@ -20,4 +20,5 @@ apt-get install -y \
             expect \
             tree \
             tmux \
-            iproute2
+            iproute2 \
+            dos2unix
