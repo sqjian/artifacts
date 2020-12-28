@@ -24,7 +24,7 @@ tee -a /etc/profile.d/alias.sh <<-'EOF'
 alias python='python3'
 EOF
 
-tee -a /etc/bash.bashrc <<-'END'
+tee -a /root/.bashrc <<-'END'
 [ ! -z "$TERM" -a -r /etc/motd ] && cat /etc/motd
 . /etc/profile
 END
