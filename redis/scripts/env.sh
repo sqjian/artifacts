@@ -26,6 +26,7 @@ EOF
 
 tee -a /etc/bash.bashrc <<-'END'
 [ ! -z "$TERM" -a -r /etc/motd ] && cat /etc/motd
+. /etc/profile
 END
 
 tee /etc/apt/sources.list <<- 'EOF'
