@@ -6,7 +6,7 @@
   "registry-mirrors": [
     "https://56b5tw3o.mirror.aliyuncs.com"
   ],
-  "data-root": "/data2",
+  "data-root": "/data",
   "log-driver": "json-file",
   "log-opts": {
     "max-size": "50m",
